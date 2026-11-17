@@ -1,56 +1,207 @@
-  DOCTYPE html>
-<html prefix=" og:https://karangtarunakubar.github.io/workbook/assets/pengantar.html#" class="kamus_bahasa_daerah" lang="id-ID" dir="ltr">
-<head>
-  <title>Kamus Bahasa Daerah | Pengantar</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kamus Bahasa Daerah-Digital language Tribe,modern web & mobile engine" />
-  <meta name="keywords" content="Kamus Bahasa Daerah Books, Translated, copyright Edo Erpani" />
-
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bahasa.daerah.id" />
-  <meta property="og:title" content="Kamus Bahasa Daerah | Copyright Edo Erpani" />
-  <meta property="og:description" content="Kamus & Panduan Terjemahan<br>Bahasa Daerah | Implementasi Digitalisasi." />
-
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Design style:  -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    (function () {
-      const currentHostname = window.location.hostname;
-      const currentPath = window.location.pathname + window.location.search + window.location.hash;
-
-      if (currentHostname === "bahasa.daerah.id") {
-        window.location.replace("https://bahasa.daerah.id" + currentPath);
-      }
-    })();
-  </script>
-  <link name="stylesheet" href="./assets/css/style.css">  
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamus Bahasa Daerah | Pengantar</title>
     <style>
-/* Center Footer & Copyright */
-copyright {
-text-align: center;
-margin-top: 30px;
-padding: 15px 0;
-border-top: 1px;
-}
-footer#footer p {
-text-align: center;
-margin: 0;
-font-size: 8pt;
-}
-</style>
-</head>
-  <body>
-  <p>Bahasa <strong>Daerah</strong> adalah salah satu bahasa yang digunakan oleh berbagai suku Dayak Tunjung, Kutai, Dayak Bahau, Dayak Kenyah, Dayak Benuaq di Kabupaten Kutai Barat dan Kabupaten Mahakam Ulu, Provinsi Kalimantan Timur, Indonesia.
-    Puji syukur senantiasa kami panjatkan ke hadirat Tuhan Yang Maha Esa, karena atas limpahan rahmat, karunia, serta petunjuk-Nya, penyusunan laporan atau karya tulis mengenai pelestarian dan pendokumentasian kebahasaan ini dapat diselesaikan dengan baik. Penyusunan karya ini dilatarbelakangi oleh kesadaran mendalam akan pentingnya menjaga eksistensi dan kekayaan warisan budaya tak benda, khususnya warisan linguistik yang hidup dan berkembang di tengah masyarakat. Sebagaimana diketahui, wilayah Kabupaten Kutai Barat dan Kabupaten Mahakam Ulu di Provinsi Kalimantan Timur, Indonesia, dikenal sebagai kawasan yang memiliki pluralitas suku bangsa yang sangat tinggi serta simpul peradaban adat yang kaya. Di wilayah geografis yang membentang luas di pedalaman Bumi Mulawarman ini, bersemayam berbagai suku bangsa asli seperti suku Dayak Tunjung, Kutai, Dayak Bahau, Dayak Kenyah, dan Dayak Benuaq, yang masing-masing mewariskan khazanah bahasa daerah yang unik, sarat makna filosofis, dan mencerminkan identitas serta kearifan lokal masyarakat pendukungnya. Bahasa-bahasa daerah tersebut bukan sekadar alat komunikasi antarsesama penutur dalam kehidupan sehari-hari, melainkan juga sebuah arsip kultural yang merekam sejarah, sistem kekerabatan, mitologi, hingga pandangan hidup masyarakat adat secara turun-temurun. Oleh karena itu, kehadiran karya ini diharapkan mampu memberikan kontribusi nyata dalam upaya inventarisasi, pemetaan, serta pelindungan bahasa-bahasa daerah di Kalimantan Timur dari ancaman kepunahan akibat arus globalisasi dan modernisasi. Kami menyadari sepenuhnya bahwa penyusunan karya ini masih jauh dari kata sempurna, baik dari segi teknik penulisan maupun kedalaman analisis. Oleh sebab itu, segala bentuk kritik, saran, serta masukan yang bersifat membangun sangat kami harapkan demi penyempurnaan di masa yang akan datang. Akhir kata, semoga karya ini dapat bermanfaat secara akademis maupun praktis bagi para peneliti, pemerhati budaya, pemerintah daerah, serta seluruh masyarakat yang memiliki komitmen kuat dalam melestarikan kekayaan bahasa daerah di Indonesia.</p>
+      :root {
+        --bg: #f3f7ff;
+        --panel: #ffffff;
+        --panel-soft: #f7faff;
+        --primary: #1d4ed8;
+        --primary-strong: #0f172a;
+        --muted: #58657a;
+        --line: #dfe9f8;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
 
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(29, 78, 216, 0.12), transparent 24%),
+          linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+        color: var(--primary-strong);
+      }
+
+      .page-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
+
+      .topbar {
+        background: rgba(255,255,255,0.76);
+        border: 1px solid rgba(255,255,255,0.7);
+        backdrop-filter: blur(12px);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        position: sticky;
+        top: 12px;
+        z-index: 10;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), #60a5fa);
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(37, 99, 235, 0.32);
+      }
+
+      .nav {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #0f172a, #1d4ed8 52%, #60a5fa);
+        color: #fff;
+        border-radius: 28px;
+        padding: 34px 28px 22px;
+        margin-top: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 3vw, 3.2rem);
+        letter-spacing: -0.04em;
+      }
+
+      .hero p {
+        margin: 0;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.86);
+        max-width: 760px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 22px;
+        margin-top: 24px;
+      }
+
+      h2, h3 {
+        color: var(--primary-strong);
+      }
+
+      .lead {
+        font-size: 1.04rem;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .mini-card {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .mini-card h3 {
+        margin: 0 0 10px;
+      }
+
+      .mini-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .footer {
+        margin-top: 28px;
+        padding: 18px 20px;
+        border-top: 1px solid var(--line);
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 720px) {
+        .topbar { flex-direction: column; align-items: flex-start; }
+        .nav { gap: 10px 14px; }
+        .hero { padding: 26px 18px 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">KT</div>
+          <span>Kamus Bahasa Daerah</span>
+        </div>
+        <nav class="nav" aria-label="Navigasi utama">
+          <a href="pengantar.html">Pengantar</a>
+          <a href="daftar_isi.html">Daftar Isi</a>
+          <a href="aksara.html">Aksara</a>
+          <a href="faqs.html">FAQs</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <h1>Pengantar</h1>
+        <p>Bahasa Daerah adalah salah satu warisan budaya yang menyimpan kekayaan pengetahuan, identitas, dan sejarah komunitas. Dokumentasi ini hadir untuk memperkuat pelestarian serta akses publik terhadap kosakata dari berbagai suku dan wilayah.</p>
+      </section>
+
+      <div class="card">
+        <p class="lead">Bahasa <strong>Daerah</strong> adalah salah satu bahasa yang digunakan oleh berbagai suku Dayak Tunjung, Kutai, Dayak Bahau, Dayak Kenyah, dan Dayak Benuaq di Kabupaten Kutai Barat dan Kabupaten lainnya di Kalimantan Timur. Bahasa-bahasa ini memiliki kekayaan leksikal yang penting untuk dijaga dan dikembangkan secara digital.</p>
+
+        <p class="lead">Puji syukur senantiasa kami panjatkan ke hadirat Tuhan Yang Maha Esa, karena atas limpahan rahmat, karunia, serta petunjuk-Nya, penyusunan laporan atau karya tulis mengenai pelestarian dan pengelolaan bahasa daerah ini dapat dilaksanakan dengan baik. Tujuan utamanya adalah membantu masyarakat, pelajar, dan peneliti memahami, mengakses, serta melestarikan kosakata lokal agar tidak punah.</p>
+
+        <div class="features">
+          <div class="mini-card">
+            <h3>Tujuan</h3>
+            <p>Menyediakan platform dokumentasi yang mudah diakses untuk setiap orang yang tertarik pada bahasa daerah.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Pelestarian</h3>
+            <p>Memperkuat ingatan kolektif dan menjaga keberlangsungan kosakata yang hidup di komunitas lokal.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Digitalisasi</h3>
+            <p>Mengubah data verbal dan kultural menjadi bentuk yang lebih mudah dibaca, dikelola, dan disebarluaskan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">Copyright © 2025 Karang Taruna • Kamus Bahasa Daerah</div>
+    </div>
   </body>
-<div class="copyright">
-    <footer id="footer">
-        <p>Copyright &copy; 2022 Edo Erpani</p>
-    </footer>
-</div>
+</html>

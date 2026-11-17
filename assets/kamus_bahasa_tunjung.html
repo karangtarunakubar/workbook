@@ -1,745 +1,96 @@
 <!DOCTYPE html>
-<html prefix=" og:http://bahasa.daerah.id/books/index.html#" class="kamus_bahasa_daerah" lang="id-ID" dir="ltr">
-
-<head>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kamus Bahasa Daerah | Tunjung</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kamus Bahasa Daerah-Digital language Tribe,modern web & mobile engine" />
-    <meta name="keywords" content="Kamus Bahasa Daerah Books, Translated, copyright Edo Erpani" />
-
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bahasa.daerah.id" />
-    <meta property="og:title" content="Kamus Bahasa Daerah | Copyright Edo Erpani" />
-    <meta property="og:description"
-        content="Kamus & Panduan Terjemahan<br>Bahasa Daerah | Implementasi Digitalisasi." />
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Design style:  -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script>
-        (function () {
-            const currentHostname = window.location.hostname;
-            const currentPath = window.location.pathname + window.location.search + window.location.hash;
-
-            if (currentHostname === "bahasa.daerah.id") {
-                window.location.replace("https://bahasa.daerah.id" + currentPath);
-            }
-        })();
-    </script>
     <style>
-        @page {
-            size: A4;
-            margin: 20mm 15mm 20mm 15mm;
-            background-color: #ffffff;
+      :root {
+        --bg: #f3f7ff;
+        --panel: #ffffff;
+        --panel-soft: #f7faff;
+        --primary: #1d4ed8;
+        --primary-strong: #0f172a;
+        --muted: #58657a;
+        --line: #dfe9f8;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
 
-            @bottom-right {
-                conte`nt: counter(page);
-                font-family: 'Georgia', serif;
-                font-size: 9pt;
-                color: #7f8c8d;
-            }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--primary-strong);
+        background: linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+      }
 
-            @bottom-left {
-                content: "Kamus Bahasa Daerah— Edo Erpani";
-                font-family: 'Georgia', serif;
-                font-size: 9pt;
-                color: #7f8c8d;
-            }
-        }
+      .page-shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 24px 20px 48px;
+      }
 
-        body {
-            font-family: 'Georgia', serif;
-            color: #2c3e50;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
-        }
-
-        .cover {
-            text-align: center;
-            padding-top: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #2c3e50;
-            margin-bottom: 25px;
-        }
-
-        .cover h1 {
-            font-size: 22pt;
-            color: #1a252f;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .cover h2 {
-            font-size: 13pt;
-            color: #e67e22;
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .author {
-            display: inline-block;
-            padding: 8px 18px;
-            background-color: #fcf8e3;
-            border: 1px solid #fbeed5;
-            border-radius: 4px;
-            font-size: 10.5pt;
-            font-weight: bold;
-            color: #8a6d3b;
-        }
-
-        h2.section-title {
-            font-size: 13pt;
-            color: #d35400;
-            border-bottom: 2px solid #d35400;
-            padding-bottom: 4px;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            page-break-after: avoid;
-        }
-
-        h3.alpha-title {
-            font-size: 11pt;
-            color: #2c3e50;
-            background-color: #ecf0f1;
-            padding: 3px 8px;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            border-left: 4px solid #d35400;
-            page-break-after: avoid;
-        }
-
-        p {
-            font-size: 9.5pt;
-            text-align: justify;
-            margin-bottom: 10px;
-        }
-
-        /* Style untuk Tabel Kamus */
-        table.dict-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 9pt;
-            margin-bottom: 15px;
-        }
-
-        table.dict-table th,
-        table.dict-table td {
-            border: 1px solid #bdc3c7;
-            padding: 6px 10px;
-            text-align: left;
-        }
-
-        table.dict-table th {
-            background-color: #f4f6f7;
-            color: #2c3e50;
-            font-weight: bold;
-            width: 40%;
-        }
-
-        table.dict-table tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-
-        table.dict-table td strong {
-            color: #16a085;
-        }
-
-        .info-box {
-            background-color: #f4f6f7;
-            border-left: 4px solid #2980b9;
-            padding: 10px 12px;
-            margin: 15px 0;
-            font-size: 9.5pt;
-        }
-
-        .info-box strong {
-            color: #2980b9;
-        }
-
-        ul {
-            font-size: 9.5pt;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 4px;
-        }
-
-        /* Center Footer & Copyright */
-        copyright {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px 0;
-            border-top: 1px;
-        }
-
-        footer#footer p {
-            text-align: center;
-            margin: 0;
-            font-size: 8pt;
-        }
+      .topbar { ... }
+      .brand { ... }
+      .brand-mark { ... }
+      .nav { ... }
+      .nav a { ... }
+      .hero { ... }
+      .hero h1 { ... }
+      .card { ... }
+      .dict-table { ... }
+      .dict-table th, .dict-table td { ... }
+      .dict-table th { ... }
+      .footer { ... }
+      @media (max-width: 720px) { .topbar { flex-direction: column; align-items: flex-start; } .nav { gap: 10px 14px; } .hero { padding: 26px 18px 18px; } }
     </style>
-</head>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand"><div class="brand-mark">KT</div><span>Kamus Bahasa Daerah</span></div>
+        <nav class="nav" aria-label="Navigasi utama">
+          <a href="pengantar.html">Pengantar</a>
+          <a href="daftar_isi.html">Daftar Isi</a>
+          <a href="aksara.html">Aksara</a>
+          <a href="faqs.html">FAQs</a>
+        </nav>
+      </header>
 
-<body>
-
-    <div class="cover">
+      <section class="hero">
         <h1>Kamus & Panduan Terjemahan<br>Bahasa Daerah Tunjung</h1>
-    </div>
+      </section>
 
-    <h3 class="alpha-title">A</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Ampaap</strong></td>
-                <td>Cahaya, sinar, terang</td>
-            </tr>
-            <tr>
-                <td><strong>Amput</strong></td>
-                <td>Ikut, mengikuti</td>
-            </tr>
-            <tr>
-                <td><strong>Ampiitn</strong></td>
-                <td>Alas</td>
-            </tr>
-            <tr>
-                <td><strong>Ampuun</strong></td>
-                <td>Bersama dengan</td>
-            </tr>
-            <tr>
-                <td><strong>Ancar</strong></td>
-                <td>Tari</td>
-            </tr>
-            <tr>
-                <td><strong>Ancaatn</strong></td>
-                <td>Guna-guna, pelet</td>
-            </tr>
-            <tr>
-                <td><strong>Anci</strong></td>
-                <td>Tusuk</td>
-            </tr>
-            <tr>
-                <td><strong>Ancur</strong></td>
-                <td>Moncong</td>
-            </tr>
-            <tr>
-                <td><strong>Angka</strong></td>
-                <td>Kira-kira, mungkin</td>
-            </tr>
-            <tr>
-                <td><strong>Angkai</strong></td>
-                <td>Bangkai</td>
-            </tr>
-            <tr>
-                <td><strong>Angkuui</strong></td>
-                <td>Rendah hati</td>
-            </tr>
-            <tr>
-                <td><strong>Antaakng</strong></td>
-                <td>Guci besar</td>
-            </tr>
-            <tr>
-                <td><strong>Antaaq</strong></td>
-                <td>Banyak</td>
-            </tr>
-            <tr>
-                <td><strong>Antakng</strong></td>
-                <td>Akan, hendak</td>
-            </tr>
-            <tr>
-                <td><strong>Anteek</strong></td>
-                <td>Sebabnya</td>
-            </tr>
-            <tr>
-                <td><strong>Antung</strong></td>
-                <td>Arah, letak, alamat</td>
-            </tr>
-            <tr>
-                <td><strong>Aur</strong></td>
-                <td>Sibuk</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">B</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Bancukng</strong></td>
-                <td>Bensin</td>
-            </tr>
-            <tr>
-                <td><strong>Bangkukng</strong></td>
-                <td>Bagian atas moncong hewan</td>
-            </tr>
-            <tr>
-                <td><strong>Bantir</strong></td>
-                <td>Masa akil balik</td>
-            </tr>
-            <tr>
-                <td><strong>Bantuut</strong></td>
-                <td>Tidak meledak/meletus</td>
-            </tr>
-            <tr>
-                <td><strong>Baon / Baoq</strong></td>
-                <td>Bau, aroma</td>
-            </tr>
-            <tr>
-                <td><strong>Begontekng</strong></td>
-                <td>Bergantung</td>
-            </tr>
-            <tr>
-                <td><strong>Beldookng</strong></td>
-                <td>Parang</td>
-            </tr>
-            <tr>
-                <td><strong>Belempai</strong></td>
-                <td>Tidak memakai baju</td>
-            </tr>
-            <tr>
-                <td><strong>Belengkenat</strong></td>
-                <td>Makanan tersangkut di leher</td>
-            </tr>
-            <tr>
-                <td><strong>Belengkoot</strong></td>
-                <td>Bengkok</td>
-            </tr>
-            <tr>
-                <td><strong>Beluntakng</strong></td>
-                <td>Tiang patung hewan kurban</td>
-            </tr>
-            <tr>
-                <td><strong>Beniaq</strong></td>
-                <td>Burung elang</td>
-            </tr>
-            <tr>
-                <td><strong>Benua</strong></td>
-                <td>Kampung</td>
-            </tr>
-            <tr>
-                <td><strong>Beor</strong></td>
-                <td>Jenis cendawan/jamur</td>
-            </tr>
-            <tr>
-                <td><strong>Berdoeeq</strong></td>
-                <td>Rapuh (tubuh)</td>
-            </tr>
-            <tr>
-                <td><strong>Berempai</strong></td>
-                <td>Jalan berduaan</td>
-            </tr>
-            <tr>
-                <td><strong>Berempuh</strong></td>
-                <td>Saling berangkulan</td>
-            </tr>
-            <tr>
-                <td><strong>Bersinak</strong></td>
-                <td>Beracun</td>
-            </tr>
-            <tr>
-                <td><strong>Bintakng</strong></td>
-                <td>Bintang</td>
-            </tr>
-            <tr>
-                <td><strong>Bion</strong></td>
-                <td>Daging masih segar</td>
-            </tr>
-            <tr>
-                <td><strong>Bioh</strong></td>
-                <td>Baru saja</td>
-            </tr>
-            <tr>
-                <td><strong>Bloak</strong></td>
-                <td>Jenis seni suara</td>
-            </tr>
-            <tr>
-                <td><strong>Buak</strong></td>
-                <td>Burung hantu</td>
-            </tr>
-            <tr>
-                <td><strong>Bueh</strong></td>
-                <td>Satu, tunggal</td>
-            </tr>
-            <tr>
-                <td><strong>Buncaarbaih</strong></td>
-                <td>Berserakan</td>
-            </tr>
-            <tr>
-                <td><strong>Buo</strong></td>
-                <td>Hujan terus-menerus</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">C</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Caor</strong></td>
-                <td>Sarung perempuan</td>
-            </tr>
-            <tr>
-                <td><strong>Cecuaq</strong></td>
-                <td>Gagap</td>
-            </tr>
-            <tr>
-                <td><strong>Coang</strong></td>
-                <td>Baskom</td>
-            </tr>
-            <tr>
-                <td><strong>Coeq</strong></td>
-                <td>Cobek</td>
-            </tr>
-        </tbody>
-        <h3 class="alpha-title">D</h3>
+      <div class="card">
         <table class="dict-table">
-            <thead>
-
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Dian</strong></td>
-                    <td>Kain lilin ritual belian</td>
-                </tr>
-                <tr>
-                    <td><strong>Diapm</strong></td>
-                    <td>Tinggal</td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Tunjung</th>
+              <th>Indonesia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Ampaap</strong></td><td>Cahaya, sinar, terang</td></tr>
+            <tr><td><strong>Amput</strong></td><td>Ikut, mengikuti</td></tr>
+            <tr><td><strong>Ampiitn</strong></td><td>Alas</td></tr>
+            <tr><td><strong>Antaakng</strong></td><td>Guci besar</td></tr>
+            <tr><td><strong>Antaq</strong></td><td>Banyak</td></tr>
+            <tr><td><strong>Baon / Baoq</strong></td><td>Bau, aroma</td></tr>
+            <tr><td><strong>Beldookng</strong></td><td>Parang</td></tr>
+            <tr><td><strong>Beniaq</strong></td><td>Burung elang</td></tr>
+            <tr><td><strong>Caor</strong></td><td>Sarung perempuan</td></tr>
+            <tr><td><strong>Dian</strong></td><td>Kain lilin ritual belian</td></tr>
+            <tr><td><strong>Encuutn</strong></td><td>Asap</td></tr>
+            <tr><td><strong>Gae</strong></td><td>Miliknya</td></tr>
+            <tr><td><strong>Huit</strong></td><td>Belantik</td></tr>
+            <tr><td><strong>Iatn</strong></td><td>Sungai</td></tr>
+            <tr><td><strong>Jait</strong></td><td>Hampir</td></tr>
+            <tr><td><strong>Juakng</strong></td><td>Bunga upacara belian</td></tr>
+          </tbody>
         </table>
-
-        <h3 class="alpha-title">E</h3>
-        <table class="dict-table">
-            <thead>
-                <tr>
-                    <th>Tunjung</th>
-                    <th>Indonesia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Encuutn</strong></td>
-                    <td>Asap</td>
-                </tr>
-                <tr>
-                    <td><strong>Encoq</strong></td>
-                    <td>Jauh</td>
-                </tr>
-                <tr>
-                    <td><strong>Engkolakng</strong></td>
-                    <td>Tempat berteduh</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3 class="alpha-title">G</h3>
-        <table class="dict-table">
-            <thead>
-                <tr>
-                    <th>Tunjung</th>
-                    <th>Indonesia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Gae</strong></td>
-                    <td>Miliknya</td>
-                </tr>
-                <tr>
-                    <td><strong>Gaer</strong></td>
-                    <td>Khawatir, cemas</td>
-                </tr>
-                <tr>
-                    <td><strong>Galikngganai</strong></td>
-                    <td>Tidur-tiduran</td>
-                </tr>
-                <tr>
-                    <td><strong>Gei siih</strong></td>
-                    <td>Jenis rotan</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3 class="alpha-title">H</h3>
-        <table class="dict-table">
-            <thead>
-                <tr>
-                    <th>Tunjung</th>
-                    <th>Indonesia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Huit</strong></td>
-                    <td>Belantik</td>
-                </tr>
-
-            </tbody>
-        </table>
-        <h3 class="alpha-title">I</h3>
-        <table class="dict-table">
-            <thead>
-                <tr>
-                    <th>Tunjung</th>
-                    <th>Indonesia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Iatn</strong></td>
-                    <td>Sungai</td>
-                </tr>
-                <tr>
-                    <td><strong>Incuk</strong></td>
-                    <td>Tukul</td>
-                </tr>
-        </table>
-    </table>
-    <h3 class="alpha-title">J</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-            <tr>
-                <td><strong>Jautn</strong></td>
-                <td>Awan</td>
-            </tr>
-            <tr>
-                <td><strong>Jemiaq</strong></td>
-                <td>Rumbia</td>
-            </tr>
-            <tr>
-                <td><strong>Juakng</strong></td>
-                <td>Bunga upacara belian</td>
-            </tr>
-        </tbody>
-    </table>
-    <h3 class="alpha-title">K</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">L</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-    <h3 class="alpha-title">M</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-    <h3 class="alpha-title">N</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">O</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">P</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">Q</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-    <h3 class="alpha-title">S</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="alpha-title">T</h3>
-    <tr>
-        <th>Tunjung</th>
-        <th>Indonesia</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Jait</strong></td>
-            <td>Hampir</td>
-        </tr>
-    </tbody>
-    </table>
-    <h3 class="alpha-title">U</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-    <h3 class="alpha-title">Y</h3>
-    <table class="dict-table">
-        <thead>
-            <tr>
-                <th>Tunjung</th>
-                <th>Indonesia</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Jait</strong></td>
-                <td>Hampir</td>
-            </tr>
-        </tbody>
-    </table>
-<style>
-/* Center Footer & Copyright */
-copyright {
-text-align: center;
-margin-top: 30px;
-padding: 15px 0;
-border-top: 1px;
-}
-footer#footer p {
-text-align: center;
-margin: 0;
-font-size: 8pt;
-}
-</style>
-<div class="copyright">
-    <footer id="footer">
-        <p>Copyright &copy; 2022 Edo Erpani</p>
-    </footer>
-</div>
       </div>
-    </body>
-    </html>
+
+      <div class="footer">Copyright © 2025 Edo Erpani • Kamus Bahasa Daerah</div>
+    </div>
+  </body>
+</html>
