@@ -1,231 +1,556 @@
 <!DOCTYPE html>
-<html prefix="og:https://karangtarunakubar.github.io/workbook#" class="workbook"
-lang="id-ID" dir="ltr">
-<head>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kamus Bahasa Daerah</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kamus Bahasa Daerah-Digital language Tribe,modern web & mobile engine"/>        
-        <meta name="keywords" content="Kamus Bahasa Daerah Books, Translated, copyright Edo Erpani"/>
-
-        <!-- Open Graph / Meta -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://github.com/karangtarunakubar/workbook" />
-        <meta property="og:title" content="Kamus Bahasa Daerah | Copyright Edo Erpani" />
-        <meta property="og:description" content="Kamus & Panduan Terjemahan<br>Bahasa Daerah | Implementasi Digitalisasi." />
-
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <!-- Tailwind CSS CDN -->
-        <script src="https://cdn.tailwindcss.com"></script>
-<!-- Design style:  -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        <script>
-            (function () {
-                const currentHostname = window.location.hostname;
-                const currentPath = window.location.pathname + window.location.search + window.location.hash;
-
-                if (currentHostname === "bahasa.daerah.id") {
-                    window.location.replace("https://bahasa.daerah.id" + currentPath);
-                }
-            })();
-        </script>
+    <meta
+      name="description"
+      content="Kamus Bahasa Daerah — dokumentasi, panduan, dan pelestarian bahasa wilayah Indonesia."
+    />
     <style>
-        @page {
-            size: A4;
-            margin: 20mm 15mm 20mm 15mm;
-            background-color: #ffffff;
-            @bottom-right {
-                content: counter(page);
-                font-family: 'Georgia', serif;
-                font-size: 9pt;
-                color: #7f8c8d;
-            }
-            @bottom-left {
-                content: "Kamus Bahasa Daerah— Edo Erpani";
-                font-family: 'Georgia', serif;
-                font-size: 9pt;
-                color: #7f8c8d;
-            }
+      :root {
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --surface-soft: #eef4ff;
+        --primary: #1d4ed8;
+        --primary-dark: #183ea8;
+        --accent: #f59e0b;
+        --text: #162033;
+        --muted: #5b6475;
+        --line: #e6ebf3;
+        --success: #0f766e;
+        --shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(180deg, #f7f9fc 0%, #eef4ff 100%);
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        font-size: 1.05rem;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), #7c3aed);
+        color: white;
+        box-shadow: var(--shadow);
+        font-size: 1.2rem;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      nav a {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      nav a:hover { color: var(--primary); }
+
+      .btn,
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        padding: 0.9rem 1.25rem;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn:hover { transform: translateY(-1px); }
+
+      .btn-outline {
+        background: white;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+
+      .hero {
+        padding: 52px 0 18px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(29, 78, 216, 0.08);
+        color: var(--primary);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(2.5rem, 5vw, 4.25rem);
+        line-height: 1.06;
+        letter-spacing: -0.05em;
+      }
+
+      .lead {
+        margin: 0;
+        font-size: 1.06rem;
+        color: var(--muted);
+        max-width: 640px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .hero-panel {
+        background: linear-gradient(145deg, #ffffff, #f4f7ff);
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-panel h3 {
+        margin: 0 0 18px;
+        font-size: 1.45rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 30px 0 26px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+      }
+
+      .section-header a {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        display: block;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 28px rgba(15, 23, 42, 0.07);
+      }
+
+      .tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(245, 158, 11, 0.12);
+        color: #b45309;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+      }
+
+      .panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      }
+
+      .panel h3 {
+        margin-top: 0;
+        font-size: 1.35rem;
+      }
+
+      .panel p,
+      .panel li {
+        color: var(--muted);
+      }
+
+      .panel ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .panel li + li { margin-top: 10px; }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        background: #f9fafb;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      td a {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      footer {
+        padding: 28px 0 36px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 16px 0;
         }
 
-        body {
-            font-family: 'Georgia', serif;
-            color: #2c3e50;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
+        nav {
+          gap: 10px 18px;
         }
 
-        .cover {
-            text-align: center;
-            padding-top: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #2c3e50;
-            margin-bottom: 25px;
+        .hero-grid,
+        .split,
+        .card-grid {
+          grid-template-columns: 1fr;
         }
 
-        .cover h1 {
-            font-size: 22pt;
-            color: #1a252f;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        .cover h2 {
-            font-size: 13pt;
-            color: #e67e22;
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-style: italic;
+        .btn,
+        .btn-outline {
+          width: 100%;
         }
 
-        .author {
-            display: inline-block;
-            padding: 8px 18px;
-            border-radius: 4px;
-            font-size: 10.5pt;
-            font-weight: bold;
-            color: #8a6d3b;
+        .actions {
+          flex-direction: column;
         }
-
-        h2.section-title {
-            font-size: 13pt;
-            color: #d35400;
-            border-bottom: 2px solid #d35400;
-            padding-bottom: 4px;
-            margin-top: 25px;
-            margin-bottom: 12px;
-            page-break-after: avoid;
-        }
-
-        h3.alpha-title {
-            font-size: 11pt;
-            color: #2c3e50;
-            background-color: #ecf0f1;
-            padding: 3px 8px;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            border-left: 4px solid #d35400;
-            page-break-after: avoid;
-        }
-
-        p {
-            font-size: 9.5pt;
-            text-align: justify;
-            margin-bottom: 10px;
-        }
-
-        .dict-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 15px;
-            font-size: 9pt;
-            margin-bottom: 10px;
-        }
-
-        .dict-item {
-            margin-bottom: 3px;
-        }
-
-        .dict-item strong {
-            color: #16a085;
-        }
-
-        .info-box {
-            background-color: #f4f6f7;
-            border-left: 4px solid #2980b9;
-            padding: 10px 12px;
-            margin: 15px 0;
-            font-size: 9.5pt;
-        }
-
-        .info-box strong {
-            color: #2980b9;
-        }
-
-        ul {
-            font-size: 9.5pt;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 4px;
-        }
-/* Center Footer & Copyright */
-        copyright {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px 0;
-            border-top: 1px;
-        }
-        footer#footer p {
-            text-align: center;
-            margin: 0;
-            font-size: 8pt;
-        }
+      }
     </style>
-</head>
-<body>
-
-    <div class="cover">
-        <h1>Kamus & Panduan Terjemahan<br>Bahasa Daerah | Implementasi Digitalisasi</h1>
-        <h2>Preserving an Endangered Language Heritage</h2>
-     
-        <div class="author">
-            Penulis / Author: Edo Erpani
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <div class="brand">
+          <div class="brand-mark">B</div>
+          <span>Kamus Bahasa Daerah</span>
         </div>
-    </div>
 
-  <!-- List -->  
-      <a href="assets/daftar_isi.html">
-   <div class="daftar-isi">
-<h2 class="section-title">Daftar Isi</h2></a>
-<a href="assets/pengantar.html">
-<h2 class="section-title">Informasi Vitalitas Bahasa</h2></a>
-    <h2 class="section-title">Data</h2>
-        <h2 class="section-title">Kamus Bahasa Daerah</h2>
-         <ul>
-             <a href="assets/kamus_bahasa_tunjung.html">
-             <h2 class="section-title">Kamus Bahasa Tunjung</h2>
-              </a>
-                <a href="assets/kamus_bahasa_bahau.html">
-              <h2 class="section-title">Kamus Bahasa Bahau</h2>
-              </a>
-                <a href="assets/kamus_bahasa_benuaq.html">
-              <h2 class="section-title">Kamus Bahasa Benuaq</h2>
-              </a>
-                <a href="assets/kamus_bahasa_kenyah.html">
-              <h2 class="section-title">Kamus Bahasa Kenyah</h2>
-              </a>
-                <a href="assets/kamus_bahasa_kutai.html">
-              <h2 class="section-title">Kamus Bahasa Kutai</h2></a>
-         </ul>
-<a href="assets/aksara.html">
-    <h2 class="section-title"> Pedoman Pelafalan & Catatan Penulis</h2>
-    
-        <a href="assets/faqs.html">
-    <h2 class="section-title">FAQs</h2></a>
-    </ul
-    <h2 class="section-title">Community Forums</h2>
-    <div>
-    <ul>
-        <a href="www.facebook.com">Facebook</a>
-        <a href="www.github.com/">Github</a>
-    </ul>
-    </div>
-    <div class="info-box">
-        <strong>Catatan Penulis (Edo Erpani):</strong><br>
-        Buku dan dokumen penerjemah ini dibuat sebagai bagian dari komitmen pelestarian warisan bahasa daerah yang terancam punah. Diharapkan dapat membantu masyarakat, pelajar, dan peneliti dalam mempelajari Bahasa Daerah.
-    </div>
-   
-</body> 
-<div class="copyright">
-<footer id="footer">
-  <p>Copyright &copy; 2022 Edo Erpani</p>
-</footer>
-</div>
+        <nav>
+          <a href="#tentang">Tentang</a>
+          <a href="#kamus">Kamus</a>
+          <a href="#dokumen">Dokumen</a>
+          <a href="#kontak">Kontak</a>
+        </nav>
+
+        <a class="btn" href="assets/daftar_isi.html">Lihat Daftar Isi</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Pusat Dokumentasi Bahasa</span>
+            <h1>Melestarikan bahasa daerah melalui digitalisasi.</h1>
+            <p class="lead">
+              Projek ini menyatukan kamus, teks pengantar, panduan, dan dokumen budaya
+              untuk menjaga keberlanjutan bahasa daerah agar tetap hidup, dapat dipelajari,
+              dan dibagikan ke masyarakat luas.
+            </p>
+
+            <div class="actions">
+              <a class="btn" href="assets/daftar_isi.html">Buka Dokumentasi</a>
+              <a class="btn-outline" href="#kamus">Jelajahi Kamus</a>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <h3>Ringkasan Koleksi</h3>
+            <div class="stats">
+              <div class="stat">
+                <strong>5+</strong>
+                <span>Kategori Bahasa</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Digital</span>
+              </div>
+              <div class="stat">
+                <strong>24/7</strong>
+                <span>Akses Mudah</span>
+              </div>
+              <div class="stat">
+                <strong>Multi</strong>
+                <span>Responsive</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="kamus">
+        <div class="container">
+          <div class="section-header">
+            <h2>Kamus Utama</h2>
+            <a href="assets/daftar_isi.html">Lihat semua</a>
+          </div>
+
+          <div class="card-grid">
+            <a class="card" href="assets/kamus_bahasa_tunjung.html">
+              <span class="tag">Kamus</span>
+              <h3>Bahasa Tunjung</h3>
+              <p>Dokumen kosakata dan istilah umum dalam Bahasa Tunjung.</p>
+            </a>
+
+            <a class="card" href="assets/kamus_bahasa_bahau.html">
+              <span class="tag">Kamus</span>
+              <h3>Bahasa Bahau</h3>
+              <p>Referensi istilah dan penerjemahan untuk Bahasa Bahau.</p>
+            </a>
+
+            <a class="card" href="assets/kamus_bahasa_benuaq.html">
+              <span class="tag">Kamus</span>
+              <h3>Bahasa Benuaq</h3>
+              <p>Kumpulan kosakata dan konteks penggunaan Bahasa Benuaq.</p>
+            </a>
+
+            <a class="card" href="assets/kamus_bahasa_kenyah.html">
+              <span class="tag">Kamus</span>
+              <h3>Bahasa Kenyah</h3>
+              <p>Publikasi kamus dan panduan untuk memahami istilah lokal.</p>
+            </a>
+
+            <a class="card" href="assets/kamus_bahasa_kutai.html">
+              <span class="tag">Kamus</span>
+              <h3>Bahasa Kutai</h3>
+              <p>Data bahasa Kutai yang disusun untuk pembelajaran dan referensi.</p>
+            </a>
+
+            <a class="card" href="assets/pengantar.html">
+              <span class="tag">Panduan</span>
+              <h3>Pengantar</h3>
+              <p>Informasi penting tentang latar belakang dan konteks bahasa daerah.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tentang">
+        <div class="container split">
+          <div class="panel">
+            <h3>Tentang Proyek</h3>
+            <p>
+              Proyek ini dibuat sebagai bentuk komitmen pelestarian warisan bahasa daerah yang
+              menghadapi ancaman kepunahan. Melalui pendekatan digital, dokumentasi dibuat lebih
+              mudah diakses, terbaca, dan bermanfaat bagi masyarakat umum, pelajar, dan peneliti.
+            </p>
+            <p>
+              Setiap halaman dirancang dengan pendekatan yang sederhana namun modern, sehingga
+              konten tetap menonjaga nilai budaya sekaligus nyaman dibaca di desktop, tablet,
+              maupun perangkat mobile.
+            </p>
+          </div>
+
+          <div class="panel" id="kontak">
+            <h3>Kontak & Sumber</h3>
+            <ul>
+              <li><strong>Penulis:</strong> Edo Erpani</li>
+              <li><strong>Dokumen:</strong> Kamus, panduan, dan referensi bahasa</li>
+              <li><strong>Repository:</strong> github.com/karangtarunakubar/workbook</li>
+              <li><strong>Publikasi:</strong> bahasa.daerah.id</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="dokumen">
+        <div class="container">
+          <div class="section-header">
+            <h2>Daftar Dokumen</h2>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Dokumen</th>
+                <th>Tipe</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Pengantar & Latar Belakang</td>
+                <td>HTML</td>
+                <td><a href="assets/pengantar.html">Buka</a></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Kamus Bahasa Tunjung</td>
+                <td>HTML</td>
+                <td><a href="assets/kamus_bahasa_tunjung.html">Buka</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Kamus Bahasa Bahau</td>
+                <td>HTML</td>
+                <td><a href="assets/kamus_bahasa_bahau.html">Buka</a></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>FAQs</td>
+                <td>HTML</td>
+                <td><a href="assets/faqs.html">Buka</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2022 Kamus Bahasa Daerah — Semua hak dilindungi.
+    </footer>
+  </body>
 </html>
